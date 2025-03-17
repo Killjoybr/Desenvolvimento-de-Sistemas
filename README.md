@@ -13,20 +13,3 @@ Repositório para acompanhamento das aulas de DS no CEUB.
 1. git commit =m {mensagem-commit}
 1. git push `Envia commits adicionandos no comando 3 e 4.`
 
-## Teste Teste
-
-teste 
-teste
-stestes
-
-
-teste
-
-ste
-
-## testes de conflito
-
-teste 1234
-231234
-69548451hksopakdi
-jzciijkskaod
