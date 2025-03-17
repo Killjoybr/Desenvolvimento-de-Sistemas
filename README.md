@@ -12,3 +12,10 @@ Repositório para acompanhamento das aulas de DS no CEUB.
     - modificadores: ``*`` e ``.``
 1. git commit =m {mensagem-commit}
 1. git push `Envia commits adicionandos no comando 3 e 4.`
+
+## testes de conflito
+
+teste 1234
+231234
+69548451hksopakdi
+jzciijkskaod
