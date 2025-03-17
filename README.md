@@ -11,4 +11,4 @@ Repositório para acompanhamento das aulas de DS no CEUB.
 1. git add `Adiciona arquivos na fase de "stage", preparando os para um commit.`
     - modificadores: ``*`` e ``.``
 1. git commit =m {mensagem-commit}
-1. git push `Envia commits adicionandos no comando 3 e 4.`
+1. git push `Envia commits adicionados no comando 3 e 4.`
