@@ -16,14 +16,16 @@
     <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.min.css"> -->
     <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/milligram/1.4.1/milligram.min.css"> -->
 </head>
-    <table>
+    <table border="1" width="100%">
         <caption><h1>Tabela de Usuarios<strong></caption>
-        <tr>
-            <th>ID</th>
-            <th>Nome</th>
-            <th>E-mail</th>
-            <th>Senha</th>
-        </tr>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Nome</th>
+                <th>E-mail</th>
+                <th>Senha</th>
+            </tr>
+        </thead>
         <?php
             // while ($row = $usuarios->fetch(PDO::FETCH_OBJ)) {
             //     echo '
@@ -38,11 +40,14 @@
             foreach ($usuarios as $key => $value) {
                 echo '
                     <tr>
-                        <td>'.$value['id'].'<td>
-                        <td>'.$value['nome'].'<td>
-                        <td>'.$value['email'].'<td>
-                        <td>'.$value['senha'].'<td>                        
-                    <tr>
+                        <td>'.$value['id'].'</td>
+                        <td>'.$value['nome'].'</td>
+                        <td>'.$value['email'].'</td>
+                        <td>'.$value['senha'].'</td>
+                        <td>
+                            <a href="excluir.php?id=<?php echo $value['id'] ?>">Excluir</a>
+                        </td>                   
+                    </tr>
                     ';
             };
         ?>
@@ -50,7 +55,7 @@
     <form method="post" action="cadastro.php">
       <h2>Cadastro de Usuário</h2>
       <input type="number" name="id" placeholder="ID">
-      <br><br>
+      
       <input type="text" placeholder="Jõaozinho da Goiaba" name="nome" required>
       <br><br>
       <input type="email" placeholder="jão@email.com" name="email" required>
