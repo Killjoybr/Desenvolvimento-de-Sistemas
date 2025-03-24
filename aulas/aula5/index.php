@@ -12,9 +12,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MYSQL</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@1/css/pico.min.css">
+    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.min.css"> -->
+    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/milligram/1.4.1/milligram.min.css"> -->
 </head>
-    <table border="1" width="100%">
-        <caption><strong>Tabela de Usuarios<strong></caption>
+    <table>
+        <caption><h1>Tabela de Usuarios<strong></caption>
         <tr>
             <th>ID</th>
             <th>Nome</th>
@@ -44,4 +47,16 @@
             };
         ?>
     </table>
+    <form method="post" action="cadastro.php">
+      <h2>Cadastro de Usuário</h2>
+      <input type="number" name="id" placeholder="ID">
+      <br><br>
+      <input type="text" placeholder="Jõaozinho da Goiaba" name="nome" required>
+      <br><br>
+      <input type="email" placeholder="jão@email.com" name="email" required>
+      <br><br>
+      <input type="password" placeholder="senha" name="senha" required>
+      <br><br>
+      <input type="submit" value="Cadastrar" name="cadastrar">
+    </form>
 </html>
