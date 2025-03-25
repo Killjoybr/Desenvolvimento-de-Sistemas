@@ -44,8 +44,8 @@
                         <td>'.$value['nome'].'</td>
                         <td>'.$value['email'].'</td>
                         <td>'.$value['senha'].'</td>
-                        <td>
-                            <a href="excluir.php?id=<?php echo $value['id'] ?>">Excluir</a>
+                        <td>'.
+                            '<a href="excluir.php?id='.$value['id'].'">Excluir</a>
                         </td>                   
                     </tr>
                     ';
