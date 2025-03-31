@@ -36,6 +36,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MYSQL</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@1/css/pico.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.min.css"> -->
     <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/milligram/1.4.1/milligram.min.css"> -->
 </head>
@@ -59,8 +60,8 @@
                         <td><?= $usuario['senha'] ?></td>
                         <td><?= $cargosArr[$usuario['cargo'] - 1] ?></td>
                         <td>
-                            <a href="excluir.php?id=<?= $usuario['id'] ?>">Excluir</a>
-                            <a href="editar.php?id=<?= $usuario['id'] ?>">Editar</a>
+                            <a href="excluir.php?id=<?= $usuario['id'] ?>"> <i class="fa fa-trash"></i> </a>
+                            <a href="editar.php?id=<?= $usuario['id'] ?>"> <i class="fa fa-pencil"></i> </a>
                         </td>                   
                     </tr>
         <?php endforeach; ?>
