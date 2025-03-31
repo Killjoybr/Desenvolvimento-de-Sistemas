@@ -1,0 +1,35 @@
+<?php
+  require_once("conexao.php");
+  $sql = "SELECT * FROM usuario";
+
+  $usuarios = $conexao->query($sql);
+  $autenticacao = "SELECT email, senha FROM usuario where email = :email AND senha = :senha";
+
+  $statement = $conexao->prepare($autenticacao);
+  $statement->bindParam('email', $_REQUEST['email']);
+  $statement->bindParam('senha', $_REQUEST['senha']);
+  $statement->execute();
+  
+  if($statement->fetchAll()){
+    echo "<h1>Autenticacao efetuada com sucesso!</h1>";
+  } else {
+    echo "<h1>Autenticacao malsucedida!</h1>";
+  }
+?>
+
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MYSQL</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@1/css/pico.min.css">
+</head>
+<body>
+  <form action="autenticacao.php" method="POST">
+      <input type="email" required name="email" placeholder="E-mail">
+      <input type="password" required name="senha" placeholder="Senha">
+      <input type="submit">
+  </form>
+</body>
+</html>
