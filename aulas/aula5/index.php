@@ -3,7 +3,10 @@
     include_once("conexao.php");
 
     $getUsers = "SELECT * FROM usuario";
+    $getCargos = "SELECT * FROM usuario_cargo";
+
     $usuarios = $conexao->query($getUsers);
+    $cargos = $conexao->query($getCargos);
 ?>
 
 <!DOCTYPE html>
@@ -16,7 +19,7 @@
     <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.min.css"> -->
     <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/milligram/1.4.1/milligram.min.css"> -->
 </head>
-    <table border="1" width="100%">
+    <table>
         <caption><h1>Tabela de Usuarios<strong></caption>
         <thead>
             <tr>
@@ -24,6 +27,7 @@
                 <th>Nome</th>
                 <th>E-mail</th>
                 <th>Senha</th>
+                <th>Ações</th>
             </tr>
         </thead>
         <?php
