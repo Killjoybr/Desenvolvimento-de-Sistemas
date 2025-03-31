@@ -1,12 +1,32 @@
 <?php
+    // while ($row = $usuarios->fetch(PDO::FETCH_OBJ)) {
+    //     echo '
+    //         <tr>
+    //             <td>TESTE</td>
+    //             <td>TESTE</td>
+    //             <td>TESTE</td>
+    //             <td>TESTE</td>
+    //         </tr>
+    //     ';
+    // };
+ 
     // include("conexao.php");
     include_once("conexao.php");
 
     $getUsers = "SELECT * FROM usuario";
     $getCargos = "SELECT * FROM usuario_cargo";
 
+    $teste = "SELECT Descricao FROM usuario_cargo where id = ";
+
     $usuarios = $conexao->query($getUsers);
     $cargos = $conexao->query($getCargos);
+    $cargosArr = []; 
+
+    foreach ($cargos as $cargo){
+      $cargosArr[] = $cargo['Descricao'];
+    }
+
+    $cargosCombo = $conexao->query($getCargos);
 ?>
 
 <!DOCTYPE html>
@@ -27,35 +47,23 @@
                 <th>Nome</th>
                 <th>E-mail</th>
                 <th>Senha</th>
+                <th>Cargo</th>
                 <th>Ações</th>
             </tr>
         </thead>
-        <?php
-            // while ($row = $usuarios->fetch(PDO::FETCH_OBJ)) {
-            //     echo '
-            //         <tr>
-            //             <td>TESTE</td>
-            //             <td>TESTE</td>
-            //             <td>TESTE</td>
-            //             <td>TESTE</td>
-            //         </tr>
-            //     ';
-            // };
-            foreach ($usuarios as $key => $value) {
-                echo '
+        <?php  foreach ($usuarios as $usuario):?>
                     <tr>
-                        <td>'.$value['id'].'</td>
-                        <td>'.$value['nome'].'</td>
-                        <td>'.$value['email'].'</td>
-                        <td>'.$value['senha'].'</td>
-                        <td>'.
-                            '<a href="excluir.php?id='.$value['id'].'">Excluir</a>
-                            <a href="editar.php?id='.$value['id'].'">Editar</a>
+                        <td><?= $usuario['id'] ?></td>
+                        <td><?= $usuario['nome'] ?></td>
+                        <td><?= $usuario['email'] ?></td>
+                        <td><?= $usuario['senha'] ?></td>
+                        <td><?= $cargosArr[$usuario['cargo'] - 1] ?></td>
+                        <td>
+                            <a href="excluir.php?id=<?= $usuario['id'] ?>">Excluir</a>
+                            <a href="editar.php?id=<?= $usuario['id'] ?>">Editar</a>
                         </td>                   
                     </tr>
-                    ';
-            };
-        ?>
+        <?php endforeach; ?>
     </table>
     <form method="post" action="cadastro.php">
       <h2>Cadastro de Usuário</h2>
@@ -64,6 +72,13 @@
       <input type="email" placeholder="jão@email.com" name="email" required>
       <br><br>
       <input type="password" placeholder="senha" name="senha" required>
+      <br><br>
+      <select name="cargo">
+      <option></option>
+      <?php  foreach ($cargosCombo as $cargo): ?>
+        <option label=<?= $cargo['Descricao'] ?>><?= $cargo['id'] ?></option>
+      <?php endforeach; ?>
+      </select>
       <br><br>
       <input type="submit" value="Cadastrar" name="cadastrar">
     </form>
