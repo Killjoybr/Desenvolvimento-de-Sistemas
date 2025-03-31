@@ -5,7 +5,14 @@
   $email = $_REQUEST['email'];
   $senha = $_REQUEST['senha'];
 
-  $conexao->query('INSERT INTO usuario (nome, email, senha) VALUES ("'.$usuario.'", "'.$email.'", "'.$senha.'")');
+  $sql = "INSERT INTO usuario (nome, email, senha) VALUES (:usuario, :email, :senha)";
+
+  $statement = $conexao->prepare($sql);
+  $statement->bindParam(':usuario',$usuario);
+  $statement->bindParam(':email',$email);
+  $statement->bindParam(':senha',$senha);
+
+  $statement->execute();
 
   header('Location: index.php');
 ?>

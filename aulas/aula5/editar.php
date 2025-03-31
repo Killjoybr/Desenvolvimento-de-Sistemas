@@ -7,8 +7,14 @@
   $senha = $_REQUEST['senha'] ?: NULL;
   
   if ($id && $nome && $email && $senha) {
-    $sql = "UPDATE usuario SET nome = '$nome', email = '$email', senha = '$senha' WHERE id = $id";
-    $conexao->query($sql);
+    $sql = "UPDATE usuario SET nome = :nome, email = :email, senha = :senha WHERE id = :id";
+    $statement = $conexao->prepare($sql);
+    $statement->bindParam(':nome',$nome);
+    $statement->bindParam(':email',$email);
+    $statement->bindParam(':senha',$senha);
+    $statement->bindParam(':id',$id);
+
+    $statement->execute();
 
     header('Location: index.php');
   }
