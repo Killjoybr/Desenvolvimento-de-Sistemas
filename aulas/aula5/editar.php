@@ -41,6 +41,7 @@
       <input type="password" placeholder="senha" name="senha" required>
       <br><br>
       <select name="cargo">
+        <option></option>
         <?php  foreach ($cargos as $cargo): ?>
         <option label=<?= $cargo['Descricao'] ?>></option>
             <?= $cargo['id'] ?>
