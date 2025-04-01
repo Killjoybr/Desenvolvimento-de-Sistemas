@@ -56,7 +56,7 @@
                         <td><?= $usuario['nome'] ?></td>
                         <td><?= $usuario['email'] ?></td>
                         <td><?= $usuario['senha'] ?></td>
-                        <td><?= $cargosArr[$usuario['cargo'] - 1] ?></td>
+                        <td><?= empty($cargosArr[$usuario['cargo'] - 1]) ? NULL : $cargosArr[$usuario['cargo'] - 1] ?></td>
                         <td>
                             <a href="excluir.php?id=<?= $usuario['id'] ?>"> <i class="fa fa-trash"></i> </a>
                             <a href="editar.php?id=<?= $usuario['id'] ?>"> <i class="fa fa-pencil"></i> </a>
