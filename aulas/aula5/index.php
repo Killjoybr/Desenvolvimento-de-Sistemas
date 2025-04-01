@@ -16,8 +16,6 @@
     $getUsers = "SELECT * FROM usuario";
     $getCargos = "SELECT * FROM usuario_cargo";
 
-    $teste = "SELECT Descricao FROM usuario_cargo where id = ";
-
     $usuarios = $conexao->query($getUsers);
     $cargos = $conexao->query($getCargos);
     $cargosArr = []; 
