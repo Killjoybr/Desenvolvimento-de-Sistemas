@@ -3,18 +3,18 @@
   $sql = "SELECT * FROM usuario";
 
   $usuarios = $conexao->query($sql);
-  $autenticacao = "SELECT email, senha FROM usuario where email = :email AND senha = :senha";
+  $autenticacao = "SELECT senha FROM usuario where email = :email";
 
   $statement = $conexao->prepare($autenticacao);
   $statement->bindParam('email', $_REQUEST['email']);
-  $statement->bindParam('senha', $_REQUEST['senha']);
   $statement->execute();
+  $usuario = $statement->fetch(PDO::FETCH_ASSOC);
+
   
-  if($statement->fetchAll()){
+  if(password_verify($_REQUEST['senha'], $usuario['senha'])){
     echo "<h1>Autenticacao efetuada com sucesso!</h1>";
-  } else {
-    echo "<h1>Autenticacao malsucedida!</h1>";
-  }
+  } 
+
 ?>
 
 <!DOCTYPE html>
