@@ -10,16 +10,20 @@
   $statement->bindParam('email', $_REQUEST['email']);
   $statement->execute();
   $usuario = $statement->fetch(PDO::FETCH_ASSOC);
-
+  
   
   if(password_verify($_REQUEST['senha'], $usuario['senha'])){
-    echo "<h1>Autenticacao efetuada com sucesso!</h1>";
-  } 
+    echo "<script type='javascript'>alert('Autenticacao efetuada com sucesso!');";
+  }
+
+  if ($_REQUEST['senha'] && password_verify($_REQUEST['senha'], $usuario['senha']) == false){
+    echo "<script>alert('Autenticacao Malsucedida!');</script>";
+  }
 
 ?>
 
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
